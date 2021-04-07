@@ -11,8 +11,8 @@ var corsOptions = {
 app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
-    getChart('hot-100', '2016-08-27', (err, chart) => {
-        if (err) res.error(err);
+    getChart(req.query.name, req.query.date, (err, chart) => {
+        if (err) res.err(err);
         console.log(chart.week) // prints the week of the chart in the date format YYYY-MM-DD
         console.log(chart.previousWeek.url) // prints the URL of the previous week's chart
         console.log(chart.previousWeek.date) // prints the date of the previous week's chart in the date format YYYY-MM-DD
